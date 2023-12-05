@@ -1,0 +1,255 @@
+/* Reset CSS */
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  font-family: -apple-system, "Source Sans Pro", BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+    sans-serif;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+// Variables
+$max-height-header: 6vh;
+$bg-header: aliceblue;
+$bg-trending: rgb(239, 2, 211);
+$top-text-content: 30rem;
+
+%text-video-container {
+  position: relative;
+  line-height: 0;
+  left: 4rem;
+  color: azure;
+  z-index: 1000;
+}
+
+// Main-style
+// For Header
+.header,.header-scroll {
+  position: sticky;
+  background-color: $bg-header;
+  max-height: $max-height-header;
+  padding: 10px 10px 10px 10px;
+  .header-container {
+    display: grid;
+    width: 100%;
+    max-height: $max-height-header;
+    grid-template-areas: "logo . . menu menu menu";
+    .logo {
+      grid-area: logo;
+      height: $max-height-header;
+      a {
+        img {
+          height: 100%;
+        }
+      }
+    }
+
+    .menu {
+      grid-area: menu;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      align-items: center;
+      li {
+        a {
+          text-decoration: none;
+          color: black;
+          font-weight: bold;
+          padding: 10px 10px 10px 10px;
+        }
+        &:hover {
+          // background-color: rgb(4, 255, 251);
+        }
+      }
+    }
+  }
+}
+
+.header-scroll {
+  display: none;
+}
+
+// For Trending
+
+.trending {
+  max-width: 100%;
+  max-height: 90vh;
+  // background-color: $bg-trending;
+  
+  .video-container {
+    width: 100%;
+    max-height: 90vh;
+    overflow: hidden;
+    #video-bg {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: cover;
+      
+      transition-delay: 1s; 
+    }
+    h2 {
+      @extend %text-video-container;
+      top: $top-text-content;
+      font-size: 50px;
+      font-weight: bold
+    }
+    p {
+      @extend %text-video-container;
+      top: calc($top-text-content + 3rem);
+      font-style: italic;
+    }
+    .bg-img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      visibility: visible;
+      background-image: url(/the-conjuring-2.jpg);
+      background-size: cover;
+      opacity: 1;
+      transition: opacity 0.3s ease-out;
+      transition-delay: 0.5s;
+      top: calc($max-height-header + 3.5vh);
+      max-width: -webkit-fill-available;
+      max-height: -webkit-fill-available;
+  }
+
+  &:hover {
+    .video-bg {
+      
+    }
+    .bg-img {
+      opacity: 0;
+      visibility: hidden;
+      transition-delay: 2s;
+    }
+    }
+  }
+  
+}
