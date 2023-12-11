@@ -1,9 +1,9 @@
-type Props = {
+export type Props = {
     source : string,
     name : string,
     location : string,
     yearBorn : number,
-    categories : Array<string>
+    categories : string
 }
 
 export default function FilmCard(props : Props) {
